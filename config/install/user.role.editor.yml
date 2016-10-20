@@ -3,12 +3,11 @@ status: true
 dependencies: {  }
 id: editor
 label: Editor
-weight: 2
+weight: -8
 is_admin: false
 permissions:
   0: 'access contextual links'
   1: 'access files overview'
-  2: 'use text format full_html'
   4: 'delete any media'
   5: 'update any media'
   6: 'access content overview'
@@ -52,3 +51,10 @@ permissions:
   46: 'update media'
   47: 'access tour'
   48: 'dropzone upload files'
+  49: 'view moderation states'
+  50: 'use published_archived transition'
+  51: 'use published_draft transition'
+  52: 'use draft_draft transition'
+  53: 'use create_new_draft transition'
+  54: 'use review transition'
+  55: 'use archived_draft transition'

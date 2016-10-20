@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - content_moderation.state.draft
+    - content_moderation.state.needs_review
+id: review_draft
+label: 'Create new draft'
+stateFrom: needs_review
+stateTo: draft
+weight: -8

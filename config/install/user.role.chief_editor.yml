@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+id: chief_editor
+label: 'Chief editor'
+weight: -6
+is_admin: null
+permissions:
+  - 'view any unpublished content'
+  - 'view moderation states'
+  - 'view latest version'
+  - 'use published_archived transition'
+  - 'use published_draft transition'
+  - 'use draft_draft transition'
+  - 'use create_new_draft transition'
+  - 'use publish transition'
+  - 'use published_published transition'
+  - 'use review transition'
+  - 'use archived_published transition'
+  - 'use archived_draft transition'
