@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Contains
+ */
+
+
+function thunder_moderation_install() {
+
+  $config = \Drupal::config('node.type.article');
+
+  $settings = $config->get('third_party_settings');
+
+  $settings['content_moderation'] = [
+    'enabled' => TRUE,
+    'allowed_moderation_states' => [
+      'published',
+      'archived',
+      'draft',
+      'needs_review',
+    ],
+    'default_moderation_state' => 'draft',
+  ];
+
+  $config->set('third_party_settings', $settings);
+}
