@@ -4,10 +4,12 @@
  * Contains
  */
 
-
+/**
+ * Implements hook_install().
+ */
 function thunder_moderation_install() {
 
-  $config = \Drupal::config('node.type.article');
+  $config = \Drupal::configFactory()->getEditable('node.type.article');
 
   $settings = $config->get('third_party_settings');
 
@@ -22,5 +24,6 @@ function thunder_moderation_install() {
     'default_moderation_state' => 'draft',
   ];
 
-  $config->set('third_party_settings', $settings);
+  $config->set('third_party_settings', $settings)->save();
+
 }
