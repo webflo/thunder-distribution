@@ -4,8 +4,8 @@ dependencies:
   config:
     - content_moderation.state.draft
     - content_moderation.state.needs_review
-id: draft_review
-label: Review
-stateFrom: draft
-stateTo: needs_review
-weight: -7
+id: review_draft
+label: 'Create new draft'
+stateFrom: needs_review
+stateTo: draft
+weight: -10

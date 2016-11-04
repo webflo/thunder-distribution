@@ -1,3 +1,4 @@
+
 langcode: en
 status: true
 dependencies: {  }
@@ -61,3 +62,5 @@ permissions:
   53: 'use create_new_draft transition'
   54: 'use review transition'
   55: 'use archived_draft transition'
+  56: 'use review_draft transition'
+  57: 'use draft_review transition'

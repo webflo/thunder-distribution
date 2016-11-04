@@ -90,6 +90,7 @@ projects[scheduler][type] = module
 projects[scheduler][version] = 1.0-alpha2
 projects[scheduled_updates][type] = module
 projects[scheduled_updates][version] = 1.0-alpha5
+projects[scheduled_updates][patch][] = https://www.drupal.org/files/issues/scheduled_updates_does-2821916-4.patch
 projects[simple_sitemap][type] = module
 projects[simple_sitemap][version] = 2.6
 projects[slick][type] = module

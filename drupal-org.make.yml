@@ -173,6 +173,8 @@ projects:
   scheduled_updates:
     type: "module"
     version: "1.0-alpha5"
+    patch:
+      - "https://www.drupal.org/files/issues/scheduled_updates_does-2821916-4.patch"
 
   simple_sitemap:
     type: "module"

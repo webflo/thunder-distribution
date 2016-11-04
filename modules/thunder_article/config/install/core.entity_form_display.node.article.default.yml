@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.image_browser
     - field.field.node.article.field_channel
     - field.field.node.article.field_meta_tags
     - field.field.node.article.field_paragraphs
@@ -9,14 +10,16 @@ dependencies:
     - field.field.node.article.field_tags
     - field.field.node.article.field_teaser_media
     - field.field.node.article.field_teaser_text
+    - field.field.node.article.moderation_state_update
     - node.type.article
   module:
+    - content_moderation
     - entity_browser
     - field_group
+    - inline_entity_form
     - metatag
     - paragraphs
     - path
-    - scheduler
 third_party_settings:
   field_group:
     group_teaser:
@@ -125,6 +128,18 @@ content:
     weight: 5
     settings: {  }
     third_party_settings: {  }
+  moderation_state_update:
+    type: inline_entity_form_complex
+    weight: 11
+    settings:
+      override_labels: true
+      label_singular: 'Moderation state Update'
+      label_plural: 'Moderation state Updates'
+      allow_new: true
+      match_operator: CONTAINS
+      allow_existing: false
+      form_mode: default
+    third_party_settings: {  }
   path:
     type: path
     weight: 11
@@ -139,10 +154,6 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 15
-    settings: {  }
-    third_party_settings: {  }
-  scheduler_settings:
-    weight: 14
     settings: {  }
     third_party_settings: {  }
   sticky:

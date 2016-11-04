@@ -65,6 +65,9 @@
       },
       "drupal/slick": {
         "Images not centered with bartik": "https://www.drupal.org/files/issues/slick-centered-images.patch"
+      },
+      "drupal/scheduled_updates": {
+        "Scheduled Updates does not work with Content Moderation": "https://www.drupal.org/files/issues/scheduled_updates_does-2821916-4.patch"
       }
     }
   },

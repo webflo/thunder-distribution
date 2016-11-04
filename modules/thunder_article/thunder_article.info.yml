@@ -17,12 +17,14 @@ dependencies:
   - paragraphs
   - path
   - pathauto
-  - scheduler
   - taxonomy
   - thunder_media
   - thunder_paragraphs
   - thunder_taxonomy
   - user
   - views
+  - content_moderation
+  - diff
+  - scheduled_updates
 version: 8.x-1.x-dev
 package: Thunder

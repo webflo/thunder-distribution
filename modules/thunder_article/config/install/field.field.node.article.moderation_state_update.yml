@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.moderation_state_update
+    - node.type.article
+    - scheduled_updates.scheduled_update_type.content_moderation_state
+id: node.article.moderation_state_update
+field_name: moderation_state_update
+entity_type: node
+bundle: article
+label: 'Moderation state Update'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    target_bundles:
+      - content_moderation_state
+  handler: 'default:scheduled_update'
+field_type: entity_reference

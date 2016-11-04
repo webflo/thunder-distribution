@@ -18,3 +18,6 @@ permissions:
   - 'use review transition'
   - 'use archived_published transition'
   - 'use archived_draft transition'
+  - 'use review_draft transition'
+  - 'use draft_published transition'
+  - 'use draft_review transition'
