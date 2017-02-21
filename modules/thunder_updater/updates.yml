@@ -71,3 +71,11 @@ v1.1:
         '#title': 'Add image paragraph to liveblog posts'
         '#description': "<p>Instead of adding images in the ckeditor, this allows you to place an image as an embedded media at the top of the post.</p>"
         '#description_failed': '<p><strong>There was a problem during the update.</strong> Go to "Structure" -> "Liveblog posts" -> "Manage fields" and click on "Edit" next to the field "Embed media". Here you can select the image paragraph.</p>'
+    v1_1__views_autocomplete_filters:
+        '#title': 'Autocompletion for Entity browser views filter'
+        '#description': "<p>Autocompletion for entity browser views improves the usability a lot.</p>"
+        '#description_failed': '<ul><li>Enable the views_autocomplete_filters module</li><li>Go to the image viwe</li><li>Click on the "Media name" filter.</li><li>Check "Use Autocomplete" and Save everything</li><li>Repeat the steps for the video browser view</li></ul>'
+        handbook_page: { '#text': 'Module page', '#url': 'https://www.drupal.org/project/views_autocomplete_filters' }
+        extension_page: { '#text': 'Enable module', '#url': 'internal:/admin/modules' }
+        image_browser_page: { '#text': 'Edit image browser view', '#url': 'internal:/admin/structure/views/view/image_browser' }
+        video_browser_page: { '#text': 'Edit video browser view', '#url': 'internal:/admin/structure/views/view/video_browser' }

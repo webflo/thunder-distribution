@@ -684,3 +684,41 @@ function thunder_update_8110() {
 
   return $updateLogger->outputHtml();
 }
+
+/**
+ * Installs and configure the views_autocomplete_filters module.
+ */
+function thunder_update_8111() {
+
+  /** @var \Drupal\thunder_updater\UpdaterInterface $thunderUpdater */
+  $thunderUpdater = \Drupal::service('thunder_updater');
+
+  /** @var \Drupal\thunder_updater\UpdateLogger $updateLogger */
+  $updateLogger = \Drupal::service('thunder_updater.logger');
+  $updateLogger->cleanLogs();
+
+  $updates = [
+    'v1_1__views_autocomplete_filters' => 'views_autocomplete_filters',
+  ];
+
+  if ($thunderUpdater->installModules($updates, $updateLogger)) {
+
+    $hash = 'MpLF2dxW81TfwiOqZu8eu2IjlpqUGsObEVy5jajIVdw';
+    if (!$thunderUpdater->revertConfig('views.view.image_browser', $updateLogger, $hash)) {
+      $thunderUpdater->markUpdatesFailed(['v1_1__views_autocomplete_filters']);
+    }
+
+    $hash = 'T4BCkJ-e9xYXdW4IAcPjSpdgzDKirI3HHSJ12HQ-J2Q';
+    if (!$thunderUpdater->revertConfig('views.view.video_browser', $updateLogger, $hash)) {
+      $thunderUpdater->markUpdatesFailed(['v1_1__views_autocomplete_filters']);
+    }
+  }
+
+  if (function_exists('drush_log') && PHP_SAPI === 'cli') {
+    $updateLogger->outputDrush();
+
+    return '';
+  }
+
+  return $updateLogger->outputHtml();
+}
