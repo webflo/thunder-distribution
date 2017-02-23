@@ -123,6 +123,7 @@ projects[views_autocomplete_filters][type] = module
 projects[views_autocomplete_filters][download][url] = https://git.drupal.org/project/views_autocomplete_filters.git
 projects[views_autocomplete_filters][download][revision] = 2915a742434bbb38b36edda4e98754698da33aed
 projects[views_autocomplete_filters][download][branch] = 8.x-1.x
+projects[views_autocomplete_filters][patch][] = https://www.drupal.org/files/issues/add_missing_schema-2855226-2.patch
 projects[views_load_more][type] = module
 projects[views_load_more][download][url] = https://git.drupal.org/project/views_load_more.git
 projects[views_load_more][download][branch] = 8.x-1.x
