@@ -77,4 +77,19 @@ interface UpdaterInterface {
    */
   public function installModules(array $modules, UpdateLogger $updateLogger);
 
+  /**
+   * Reverts a configuration object.
+   *
+   * @param string $configName
+   *   Full name of the configuration.
+   * @param \Drupal\thunder\ThunderUpdateLogger $updateLogger
+   *   The update logger service.
+   * @param string $hash
+   *   A hash to check if config was changed.
+   *
+   * @return bool
+   *   Indicates if revert was successful.
+   */
+  public function revertConfig($configName, ThunderUpdateLogger $updateLogger, $hash = NULL);
+
 }

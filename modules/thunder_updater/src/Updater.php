@@ -12,6 +12,8 @@ use Drupal\thunder_updater\Entity\Update;
 use Drupal\user\SharedTempStoreFactory;
 use Drupal\Component\Utility\DiffArray;
 use Drupal\checklistapi\ChecklistapiChecklist;
+use Drupal\config_update\ConfigRevertInterface;
+use Drupal\Core\Config\ConfigNameException;
 
 /**
  * Helper class to update configuration.
@@ -47,6 +49,20 @@ class Updater implements UpdaterInterface {
   protected $account;
 
   /**
+   * The config helper service.
+   *
+   * @var ConfigHelper
+   */
+  protected $configHelper;
+
+  /**
+   * The config reverter service.
+   *
+   * @var \Drupal\config_update\ConfigReverter
+   */
+  protected $configReverter;
+
+  /**
    * Constructs the PathBasedBreadcrumbBuilder.
    *
    * @param \Drupal\user\SharedTempStoreFactory $tempStoreFactory
@@ -57,12 +73,18 @@ class Updater implements UpdaterInterface {
    *   Module installer service.
    * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user.
+   * @param ConfigHelper $configHelper
+   *   The config helper service.
+   * @param \Drupal\config_update\ConfigRevertInterface $configReverter
+   *   The config reverter service.
    */
-  public function __construct(SharedTempStoreFactory $tempStoreFactory, ConfigFactoryInterface $configFactory, ModuleInstallerInterface $moduleInstaller, AccountInterface $account) {
+  public function __construct(SharedTempStoreFactory $tempStoreFactory, ConfigFactoryInterface $configFactory, ModuleInstallerInterface $moduleInstaller, AccountInterface $account, ConfigHelper $configHelper, ConfigRevertInterface $configReverter) {
     $this->tempStoreFactory = $tempStoreFactory;
     $this->configFactory = $configFactory;
     $this->moduleInstaller = $moduleInstaller;
     $this->account = $account;
+    $this->configHelper = $configHelper;
+    $this->configReverter = $configReverter;
   }
 
   /**
@@ -319,6 +341,27 @@ class Updater implements UpdaterInterface {
     }
     $this->markUpdatesSuccessful($successful);
     return TRUE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function revertConfig($configName, ThunderUpdateLogger $updateLogger, $hash = NULL) {
+
+    try {
+      if (!$this->configHelper->isModified($configName, $hash)) {
+        $config = ConfigName::createByFullName($configName);
+        $this->configReverter->revert($config->getType(), $config->getName());
+        return TRUE;
+      }
+      else {
+        $updateLogger->warning($this->t('Config @config is already modified and will not be touched.', ['@config' => $configName]));
+      }
+    }
+    catch (ConfigNameException $exception) {
+      $updateLogger->warning($this->t('Config @config does not exists.', ['@config' => $configName]));
+    }
+    return FALSE;
   }
 
 }
