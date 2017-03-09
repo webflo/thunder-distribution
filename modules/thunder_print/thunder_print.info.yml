@@ -1,0 +1,8 @@
+name: Thunder for Print
+type: module
+description: Integrtes with InDesign.
+package: Thunder
+core: 8.x
+dependencies:
+  - workspace:workspace
+  - replicate:replicate

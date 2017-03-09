@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Contains.
+ */
+
+use Drupal\workspace\Entity\Workspace;
+
+/**
+ * Implements hook_install().
+ */
+function thunder_print_install() {
+
+  /** @var \Drupal\workspace\Entity\WorkspaceInterface $stage */
+  $stage = Workspace::create(['machine_name' => 'print', 'label' => 'Print']);
+  $stage->save();
+}
