@@ -1,0 +1,5 @@
+services:
+  thunder_print.article_replicate_subscriber:
+    class: Drupal\thunder_print\EventSubscriber\ArticleReplicateSubscriber
+    tags:
+      - { name: event_subscriber }

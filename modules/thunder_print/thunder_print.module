@@ -23,11 +23,20 @@ function thunder_print_entity_operation(EntityInterface $entity) {
     ->getActiveWorkspace(TRUE);
 
   if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'article' && $active_workspace->id() == 'live') {
-    $operations['migrate_to_print'] = array(
-      'title' => t('Migrate to print'),
-      'url' => Url::fromRoute('thunder_print.migrate', ['node' => $entity->id()]),
-      'weight' => 50,
-    );
+    if ($entity->referenced_print_entity->isEmpty()) {
+      $operations['migrate_to_print'] = array(
+        'title' => t('Migrate to print'),
+        'url' => Url::fromRoute('thunder_print.migrate', ['node' => $entity->id()]),
+        'weight' => 50,
+      );
+    }
+    else {
+      $operations['switch_to_print'] = array(
+        'title' => t('Switch to print version'),
+        'url' => Url::fromRoute('thunder_print.switch', ['node' => $entity->id()]),
+        'weight' => 50,
+      );
+    }
   }
 
   return $operations;
@@ -60,9 +69,11 @@ function thunder_print_views_query_alter(ViewExecutable $view, QueryPluginBase $
   $query->addRelationship('cwrf', $join, 'content_workspace_field_revision');
 
   if ($active_workspace == 'print') {
+    // On "Print" workspace, only display print entities.
     $query->addWhere(0, 'cwrf.workspace', [$active_workspace], 'IN');
   }
   else {
+    // Other workspaces, show everything without print.
     $query->addWhere(0, 'cwrf.workspace', ['print'], 'NOT IN');
   }
 

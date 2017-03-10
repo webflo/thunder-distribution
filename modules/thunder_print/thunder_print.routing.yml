@@ -5,3 +5,11 @@ thunder_print.migrate:
     _controller: '\Drupal\thunder_print\Controller\MigrateController::migrate'
   requirements:
     _permission: 'administer content'
+
+thunder_print.switch:
+  path: '/article/switch/{node}'
+  defaults:
+    _title: 'Workspace deployment'
+    _controller: '\Drupal\thunder_print\Controller\MigrateController::switchToNode'
+  requirements:
+    _permission: 'administer content'

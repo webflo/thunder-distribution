@@ -6,6 +6,8 @@
  */
 
 use Drupal\workspace\Entity\Workspace;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
 
 /**
  * Implements hook_install().
@@ -15,4 +17,27 @@ function thunder_print_install() {
   /** @var \Drupal\workspace\Entity\WorkspaceInterface $stage */
   $stage = Workspace::create(['machine_name' => 'print', 'label' => 'Print']);
   $stage->save();
+
+  FieldStorageConfig::create([
+    'field_name' => 'referenced_print_entity',
+    'type' => 'entity_reference',
+    'entity_type' => 'node',
+    'cardinality' => 1,
+    'locked' => TRUE,
+    'settings' => [
+      'target_type' => 'node',
+    ],
+  ])->save();
+
+  FieldConfig::create([
+    'field_name' => 'referenced_print_entity',
+    'entity_type' => 'node',
+    'bundle' => 'article',
+    'label' => 'Referenced print entity',
+    'description' => 'Referenced print entity',
+    'settings' => [
+      'handler' => 'default',
+      'handler_settings' => ['target_bundles' => ['article']],
+    ],
+  ])->save();
 }
