@@ -22,17 +22,26 @@ function thunder_print_entity_operation(EntityInterface $entity) {
   $active_workspace = \Drupal::service('workspace.manager')
     ->getActiveWorkspace(TRUE);
 
-  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'article' && $active_workspace->id() == 'live') {
-    if ($entity->referenced_print_entity->isEmpty()) {
-      $operations['migrate_to_print'] = array(
-        'title' => t('Migrate to print'),
-        'url' => Url::fromRoute('thunder_print.migrate', ['node' => $entity->id()]),
-        'weight' => 50,
-      );
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'article') {
+    if ($active_workspace->id() == 'live') {
+      if ($entity->referenced_print_entity->isEmpty()) {
+        $operations['migrate_to_print'] = array(
+          'title' => t('Migrate to print'),
+          'url' => Url::fromRoute('thunder_print.migrate', ['node' => $entity->id()]),
+          'weight' => 50,
+        );
+      }
+      else {
+        $operations['switch_to_print'] = array(
+          'title' => t('Switch to print version'),
+          'url' => Url::fromRoute('thunder_print.switch', ['node' => $entity->id()]),
+          'weight' => 50,
+        );
+      }
     }
-    else {
-      $operations['switch_to_print'] = array(
-        'title' => t('Switch to print version'),
+    elseif ($active_workspace->id() == 'print' && !$entity->referenced_print_entity->isEmpty()) {
+      $operations['switch_to_live'] = array(
+        'title' => t('Switch to live version'),
         'url' => Url::fromRoute('thunder_print.switch', ['node' => $entity->id()]),
         'weight' => 50,
       );

@@ -114,6 +114,7 @@
         "drupal/paragraphs": "^1.0",
         "drupal/pathauto": "^1.0",
         "drupal/responsive_preview": "^1.0",
+        "drupal/replicate": "^1.0",
         "drupal/riddle_marketplace": "^1.0",
         "drupal/scheduler": "^1.0",
         "drupal/simple_sitemap": "^2.0",
@@ -124,6 +125,7 @@
         "drupal/token": "^1.0",
         "drupal/video_embed_field": "^1.0",
         "drupal/views_load_more": "dev-1.x",
+        "drupal/workspace": "dev-2.x",
         "valiton/harbourmaster": "~8.1"
     },
     "provide": {

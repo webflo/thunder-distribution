@@ -10,6 +10,6 @@ thunder_print.switch:
   path: '/article/switch/{node}'
   defaults:
     _title: 'Workspace deployment'
-    _controller: '\Drupal\thunder_print\Controller\MigrateController::switchToNode'
+    _controller: '\Drupal\thunder_print\Controller\MigrateController::switchWorkspace'
   requirements:
     _permission: 'administer content'

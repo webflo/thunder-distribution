@@ -77,22 +77,14 @@ class MigrateController extends ControllerBase {
   /**
    * Switch to a node on different workspace.
    */
-  public function switchToNode(ContentEntityInterface $node) {
+  public function switchWorkspace(ContentEntityInterface $node) {
 
-    $results = $this->entityTypeManager()
-      ->getStorage('content_workspace')
-      ->loadByProperties([
-        'content_entity_type_id' => $node->getEntityTypeId(),
-        'content_entity_id' => $node->referenced_print_entity->target_id,
-      ]);
+    $active_workspace = $this->workspaceManager->getActiveWorkspace();
+    $target = ($active_workspace == 'print') ? 'live' : 'print';
 
-    if ($results) {
-      /** @var \Drupal\workspace\Entity\WorkspaceInterface $workspace */
-      $workspace = current($results);
-      if ($workspace->workspace->target_id == 'print' && !$node->referenced_print_entity->isEmpty()) {
-        $target = $this->workspaceManager->load('print');
-        return $this->switchAndRedirect($node->referenced_print_entity->target_id, $target);
-      }
+    if (!$node->referenced_print_entity->isEmpty()) {
+      $target = $this->workspaceManager->load($target);
+      return $this->switchAndRedirect($node->referenced_print_entity->target_id, $target);
     }
   }
 
