@@ -90,10 +90,10 @@ class ConfigName {
    *   Returns array with config type and name.
    */
   protected function parseFullName($fullConfigName) {
-    $result = array(
+    $result = [
       'type' => '',
       'name' => $fullConfigName,
-    );
+    ];
 
     $prefix = static::SYSTEM_SIMPLE_CONFIG . '.';
     if (strpos($fullConfigName, $prefix)) {

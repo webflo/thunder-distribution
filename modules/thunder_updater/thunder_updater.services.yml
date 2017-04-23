@@ -1,10 +1,9 @@
 services:
   thunder_updater:
     class: Drupal\thunder_updater\Updater
-    arguments: ['@user.shared_tempstore', '@config.factory', '@module_installer', '@current_user']
+    arguments: ['@user.shared_tempstore', '@config.factory', '@module_installer', '@current_user', '@thunder_updater.config.helper', '@config_update.config_update']
   thunder_updater.logger:
     class: Drupal\thunder_updater\UpdateLogger
-    arguments: ['@user.shared_tempstore', '@config.factory', '@module_installer', '@current_user', '@thunder_updater.config.helper', '@config_update.config_update']
   thunder_updater.config.helper:
     class: Drupal\thunder_updater\ConfigHelper
     arguments: ['@config.storage']
