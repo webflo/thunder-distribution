@@ -82,7 +82,7 @@ interface UpdaterInterface {
    *
    * @param string $configName
    *   Full name of the configuration.
-   * @param \Drupal\thunder\ThunderUpdateLogger $updateLogger
+   * @param \Drupal\thunder_updater\UpdateLogger $updateLogger
    *   The update logger service.
    * @param string $hash
    *   A hash to check if config was changed.
@@ -90,6 +90,6 @@ interface UpdaterInterface {
    * @return bool
    *   Indicates if revert was successful.
    */
-  public function revertConfig($configName, ThunderUpdateLogger $updateLogger, $hash = NULL);
+  public function revertConfig($configName, UpdateLogger $updateLogger, $hash = NULL);
 
 }

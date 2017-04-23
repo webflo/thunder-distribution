@@ -346,7 +346,7 @@ class Updater implements UpdaterInterface {
   /**
    * {@inheritdoc}
    */
-  public function revertConfig($configName, ThunderUpdateLogger $updateLogger, $hash = NULL) {
+  public function revertConfig($configName, UpdateLogger $updateLogger, $hash = NULL) {
 
     try {
       if (!$this->configHelper->isModified($configName, $hash)) {
