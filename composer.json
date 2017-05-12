@@ -78,9 +78,6 @@
             },
             "drupal/paragraphs": {
                 "create a NEW paragraph 'in place' between existing ones": "https://www.drupal.org/files/issues/sorting_of_paragraphs-2828110-6.patch"
-            },
-            "drupal/views_autocomplete_filters": {
-                "Add missing schema": "https://www.drupal.org/files/issues/add_missing_schema-2855226-2.patch"
             }
         }
     },
