@@ -4,4 +4,5 @@ type: module
 core: 8.x
 dependencies:
   - checklistapi:checklistapi
+  - config_update:config_update
 package: Thunder
