@@ -51,6 +51,7 @@ projects:
     version: "1.0-alpha2"
     patch:
       - "https://www.drupal.org/files/issues/support_any_entity_type-2852187-7.patch"
+      - "https://www.drupal.org/files/issues/schema_issues-2892347-2.patch"
 
   crop:
     type: "module"

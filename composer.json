@@ -68,7 +68,8 @@
                 "Don't use network for loading logo information": "https://www.drupal.org/files/issues/amptheme-do_not_use_the_network_for_loading_logo_information-2753089-7.patch"
             },
             "drupal/content_lock": {
-                "Support any entity type without module dependencies": "https://www.drupal.org/files/issues/support_any_entity_type-2852187-7.patch"
+                "Support any entity type without module dependencies": "https://www.drupal.org/files/issues/support_any_entity_type-2852187-7.patch",
+                "Schema issues": "https://www.drupal.org/files/issues/schema_issues-2892347-2.patch"
             }
         }
     },

@@ -25,6 +25,7 @@ projects[config_update][version] = 1
 projects[content_lock][type] = module
 projects[content_lock][version] = 1.0-alpha2
 projects[content_lock][patch][] = https://www.drupal.org/files/issues/support_any_entity_type-2852187-7.patch
+projects[content_lock][patch][] = https://www.drupal.org/files/issues/schema_issues-2892347-2.patch
 projects[crop][type] = module
 projects[crop][version] = 1
 projects[ctools][type] = module
